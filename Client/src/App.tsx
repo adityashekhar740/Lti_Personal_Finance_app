@@ -4,8 +4,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ForgotPassword from './pages/ForgotPassword';
-import Dashboard from './pages/Dashboard';
-import Home from './components/new/';
+import FinancialDashboard from './pages/Dashboard';
+import  MainDashboard from './components/new/Home';
 
 function App() {
   return (
@@ -15,10 +15,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/financialdashboard" element={<Dashboard />} />
-        <Route path="/dashboard" element={<Home />} />
-        <Route path="/financialdashboard" element={<Dashboard />} />
-        <Route path="/financialdashboard" element={<Dashboard />} />
+        <Route path="/financialdashboard" element={<FinancialDashboard />} />
+        <Route path="/dashboard" element={< MainDashboard/>} />
+        
       </Routes>
     </Router>
   );
