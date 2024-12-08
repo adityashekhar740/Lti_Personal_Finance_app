@@ -5,7 +5,7 @@ import { Input } from '../ui/Input';
 import { PasswordStrengthIndicator } from '../ui/PasswordStrengthIndicator';
 import { Link } from 'react-router-dom';
 import { validateEmail, validatePassword } from '../../lib/validation';
-
+import axios from 'axios';
 export const RegisterForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -53,10 +53,20 @@ export const RegisterForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  const handleSignUp= async(e)=>{
+    try{
+      const res=await axios.post('/api/auth/signup',formData);
+      console.log(res);
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
       console.log('Form is valid, submitting...', formData);
+      handleSignUp(e);
     }
   };
 
