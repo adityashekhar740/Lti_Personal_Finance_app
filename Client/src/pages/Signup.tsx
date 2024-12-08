@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SignupForm from '../components/auth/SignupForm';
 import { DollarSign } from 'lucide-react';
-
 export default function Signup() {
+
+
   return (
     <div className="min-h-screen bg-dark-900 flex items-center justify-center relative overflow-hidden">
       {/* Abstract Background Pattern */}

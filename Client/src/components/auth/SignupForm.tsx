@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Mail, Lock, User } from 'lucide-react';
+import axios from 'axios';
 
 export default function SignupForm() {
   const [name, setName] = useState('');
@@ -8,8 +9,15 @@ export default function SignupForm() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit =async (e: React.FormEvent) => {
     e.preventDefault();
+    try{
+      const res=await axios.post('/api/auth/signup',{name,email,password});
+      console.log(res);
+    }
+    catch(e){
+      console.log(e);
+    }
     navigate('/dashboard');
   };
 
