@@ -5,7 +5,6 @@ import { Input } from '../ui/Input';
 import { PasswordStrengthIndicator } from '../ui/PasswordStrengthIndicator';
 import { Link } from 'react-router-dom';
 import { validateEmail, validatePassword } from '../../lib/validation';
-import axios from 'axios';
 export const RegisterForm = () => {
   const [formData, setFormData] = useState({
     name: '',
