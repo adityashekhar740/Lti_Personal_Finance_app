@@ -1,6 +1,8 @@
 
 const bcrypt=require('bcryptjs');
 const UserModel=require('../models/user.model');
+const jwt=require('jsonwebtoken');
+
 const SignUp=async(req,res)=>{
     const {name,email,password}=req.body;
   
@@ -20,5 +22,38 @@ const SignUp=async(req,res)=>{
     }
 }
 
+const SignIn=async(req,res)=>{
+    const {email,password}=req.body;
+    if(!email || !password){
+        return res.status(400).json('PLESE ENTER ALL THE FIELDS');
+    }
+    try{
+        const user=await UserModel.findOne({email});
+        if(!user){
+            return res.status(401).json('USER NOT FOUND');
+        }
+        const validPassword=bcrypt.compareSync(password,user.password);
+        if(!validPassword){
+            return res.status(401).json('INCORRECT PASSWORD');
+        }
+        const token=jwt.sign({id:user._id},process.env.JWT_SECRET);
+        const {password:pass,...rest}=user._doc;
+        res.cookie('access_token',token,{httpOnly:true}).status(200).json(rest);
+        
+    }
+    catch(e){
+        res.status.json('UNABLE TO SIGNIN');
+    }
+}
 
-module.exports={SignUp};
+const LogOut=async(req,res)=>{
+    try{
+        res.clearCookie('access_token');
+        res.status(200).json('LOGGED OUT SUCCESSFULLY...!!');
+        
+    }
+    catch(e){
+        res.status(500).json('UNABLE TO LOGOUT');
+    }
+}
+module.exports={SignUp,SignIn,LogOut};

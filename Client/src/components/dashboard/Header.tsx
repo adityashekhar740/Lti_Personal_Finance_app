@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Plus, LogOut } from 'lucide-react';
+import axios from 'axios';
 
 interface HeaderProps {
   onAddExpense: () => void;
@@ -9,8 +10,15 @@ interface HeaderProps {
 export default function Header({ onAddExpense }: HeaderProps) {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    navigate('/');
+  const handleLogout = async() => {
+    try{
+      const res=await axios.get('/api/auth/logout');
+      console.log(res);
+      navigate('/');
+    }
+    catch(e){ 
+      console.log(e);
+    }
   };
 
   return (

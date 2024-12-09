@@ -3,6 +3,7 @@ const dotenv=require('dotenv');
 const mongoose=require('mongoose');
 const cors=require('cors');
 const AuthRouter=require('./routes/Auth');
+const cookieParser=require('cookie-parser');
 const app=express();
 dotenv.config();
 const corsOptions={
@@ -11,7 +12,7 @@ const corsOptions={
     Credentials:true,
 }
 
-
+app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(express.json());                // to send data in json form
 mongoose.connect(process.env.MONGO).then(()=>{

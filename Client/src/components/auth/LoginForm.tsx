@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Mail, Lock } from 'lucide-react';
+import axios from 'axios';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -9,9 +10,16 @@ export default function LoginForm() {
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit =async (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/dashboard');
+    try{
+      const res=await axios.post('/api/auth/signin',{email,password});
+      console.log(res);
+      navigate('/financialdashboard');
+    }
+    catch(e){
+      console.log(e);
+    }
   };
 
   return (
