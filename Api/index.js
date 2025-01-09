@@ -3,6 +3,7 @@ const dotenv=require('dotenv');
 const mongoose=require('mongoose');
 const cors=require('cors');
 const AuthRouter=require('./routes/Auth');
+const IncomeRouter=require('./routes/income');
 const cookieParser=require('cookie-parser');
 const app=express();
 dotenv.config();
@@ -19,7 +20,7 @@ mongoose.connect(process.env.MONGO).then(()=>{
     console.log("Connected to MongoDB");
 });
 app.use('/api/auth',AuthRouter);
-
+app.use('/api/income',IncomeRouter);
 
 
 
