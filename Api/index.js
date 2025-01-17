@@ -6,6 +6,8 @@ const AuthRouter=require('./routes/Auth');
 const IncomeRouter=require('./routes/income');
 const ExpensesRouter=require('./routes/Expenses');
 const BudgetRouter=require('./routes/Budget');
+const InvestmentRouter=require('./routes/investment');
+const DashboardRouter=require('./routes/Dashboard');
 const cookieParser=require('cookie-parser');
 const PrivateRouter =require('./routes/PrivateRoute');
 const app=express();
@@ -28,6 +30,8 @@ app.use('/api/privateroute/authenticate',PrivateRouter);
 app.use('/api/expenses',ExpensesRouter);
 app.use('/api/expenses',ExpensesRouter);
 app.use('/api/budget',BudgetRouter);
+app.use('/api/investment',InvestmentRouter);
+app.use('/api/dashboard',DashboardRouter);
 app.listen(5000,()=>{
     console.log('server is running on port 5000');
 });

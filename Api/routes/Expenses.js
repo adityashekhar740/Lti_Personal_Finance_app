@@ -4,9 +4,10 @@ const {
   getAllExpenses,
   deleteExpense,
 } = require("../controllers/Expenses.Controller");
+const VerifyToken = require('../middlewares/VerifyToken');
 const Router=express.Router();
 
-Router.post("/addexpense", addExpense);
-Router.get("/getallexpenses", getAllExpenses);
-Router.delete('/deleteexpense/:id',deleteExpense);
+Router.post("/addexpense", VerifyToken, addExpense);
+Router.get("/getallexpenses", VerifyToken, getAllExpenses);
+Router.delete("/deleteexpense/:id", VerifyToken, deleteExpense);
 module.exports=Router;

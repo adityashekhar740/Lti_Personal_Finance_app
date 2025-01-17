@@ -15,6 +15,7 @@ const addIncomeSource=async(req,res)=>{
     res.status(201).json(newIncomeSource);
    }
    catch(e){
+    console.log(e)
     res.status(500).json('UNABLE TO ADD INCOME SOURCE');
    }
 }
