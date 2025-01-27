@@ -32,6 +32,9 @@ app.use('/api/expenses',ExpensesRouter);
 app.use('/api/budget',BudgetRouter);
 app.use('/api/investment',InvestmentRouter);
 app.use('/api/dashboard',DashboardRouter);
+app.get('/',(req,res)=>{
+    res.send('running fine !!..');
+})
 app.listen(5000,()=>{
     console.log('server is running on port 5000');
 });
