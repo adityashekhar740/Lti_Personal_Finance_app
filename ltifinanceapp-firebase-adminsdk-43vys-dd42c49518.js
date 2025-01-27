@@ -1,8 +1,7 @@
 
 import dotenv from 'dotenv';
-dotenv.config(); // Load the .env variables
+dotenv.config(); 
 
-// Your JSON-like configuration
 const firebaseConfig = {
   type: process.env.TYPE,
   project_id: process.env.PROJECT_ID,
@@ -17,4 +16,4 @@ const firebaseConfig = {
   universe_domain: process.env.UNIVERSE_DOMAIN
 };
 
-console.log(firebaseConfig); // Your config object
+console.log(firebaseConfig); 
