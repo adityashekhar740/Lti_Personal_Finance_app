@@ -24,14 +24,14 @@ app.use(express.json());                // to send data in json form
 mongoose.connect(process.env.MONGO).then(()=>{
     console.log("Connected to MongoDB");
 });
-app.use('/api/auth',AuthRouter);
-app.use('/api/income',IncomeRouter);
-app.use('/api/privateroute/authenticate',PrivateRouter);
-app.use('/api/expenses',ExpensesRouter);
-app.use('/api/expenses',ExpensesRouter);
-app.use('/api/budget',BudgetRouter);
-app.use('/api/investment',InvestmentRouter);
-app.use('/api/dashboard',DashboardRouter);
+app.use('/auth',AuthRouter);
+app.use('/income',IncomeRouter);
+app.use('/privateroute/authenticate',PrivateRouter);
+app.use('/expenses',ExpensesRouter);
+app.use('/expenses',ExpensesRouter);
+app.use('/budget',BudgetRouter);
+app.use('/investment',InvestmentRouter);
+app.use('/dashboard',DashboardRouter);
 app.get('/',(req,res)=>{
     res.send('running fine !!..');
 })
